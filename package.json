@@ -1,0 +1,13 @@
+{
+  "name": "seat-reservation-system",
+  "private": true,
+  "version": "0.1.0",
+  "workspaces": ["server", "web"],
+  "scripts": {
+    "dev:server": "ts-node-dev --respawn --transpile-only server/src/server.ts",
+    "dev:web": "vite --config web/vite.config.ts",
+    "dev": "concurrently -k \"pnpm dev:server\" \"pnpm dev:web\"",
+    "typecheck": "tsc -b"
+  }
+}
+

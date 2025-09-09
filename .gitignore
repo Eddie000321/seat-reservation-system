@@ -1,0 +1,23 @@
+# Node
+node_modules/
+*.log
+*.pid
+*.seed
+*.tgz
+.env
+.env.*.local
+
+# Editor/OS
+.DS_Store
+.idea/
+.vscode/
+
+# Build artifacts
+dist/
+build/
+coverage/
+.turbo/
+.cache/
+.parcel-cache/
+.next/
+
