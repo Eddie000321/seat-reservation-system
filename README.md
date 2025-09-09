@@ -1,26 +1,44 @@
 # Seat Reservation System (Skeleton)
 
-이 저장소는 좌석 예약 시스템을 직접 구현해보도록 설계된 최소 골격입니다.
-모든 구현 가이드는 각 파일의 주석(TODO)에 숨겨져 있습니다. 주석을 따라가며 스스로 코드를 작성해보세요.
+A minimal scaffold designed for implementing a seat reservation system yourself. All guidance is embedded as TODO comments inside source files. Follow those comments and type the code you want.
 
-## 구조
-- server: Node/Express 백엔드 (TypeScript)
-- web: React 프론트엔드 (Vite + TypeScript)
+## Structure
+- `server`: Node/Express backend (TypeScript)
+- `web`: React frontend (Vite + TypeScript)
+- root configs: `package.json`, `tsconfig.base.json`, `.env.example`, `.gitignore`
 
-## 시작하기
-1) `.env.example`를 복사해 `.env`를 만듭니다.
-2) 패키지 매니저 선택 후 의존성 설치(pnpm/npm/yarn). 예: `pnpm -w i`
-3) 서버/웹 개발 서버 실행: 루트에서 `pnpm dev` (스クリپ트 참고)
+## Getting Started
+1) Copy `.env.example` to `.env` and adjust values (e.g., `PORT`, `DATABASE_URL`, `VITE_API_BASE_URL`).
+2) Install dependencies with your preferred package manager (pnpm/npm/yarn). Example with pnpm workspaces: `pnpm -w i`.
+3) Run dev servers from the repo root: `pnpm dev` (starts server and web together).
+   - Or run individually: `pnpm --filter server dev`, `pnpm --filter web dev`.
 
-세부 구현은 아래 파일들 주석을 먼저 확인하세요.
-- 서버 엔트리: `server/src/server.ts`
-- 앱 구성: `server/src/app.ts`
-- 라우터: `server/src/routes/reservations.ts`
-- 서비스: `server/src/services/reservationService.ts`
-- 저장소: `server/src/repositories/reservationRepository.ts`
-- 웹 엔트리: `web/src/main.tsx`
-- 최상위 컴포넌트: `web/src/App.tsx`
-- 좌석맵: `web/src/components/SeatMap.tsx`
-- 예약폼: `web/src/components/ReservationForm.tsx`
-- API 클라이언트: `web/src/api/client.ts`
+## Where to Implement
+Start by opening these files and following the inline TODOs:
+- Server entry: `server/src/server.ts`
+- App wiring (middlewares/routes): `server/src/app.ts`
+- Router: `server/src/routes/reservations.ts`
+- Controllers: `server/src/controllers/reservationController.ts`
+- Service (concurrency/holds/atomicity): `server/src/services/reservationService.ts`
+- Repository (start in-memory, swap to DB later): `server/src/repositories/reservationRepository.ts`
+- Entities: `server/src/entities/Seat.ts`, `server/src/entities/Reservation.ts`
+- Error handler: `server/src/middleware/errorHandler.ts`
+- Validation helpers: `server/src/utils/validation.ts`
+- Config: `server/src/config/index.ts`
+- Service test ideas: `server/tests/reservationService.test.ts`
 
+- Web entry: `web/src/main.tsx`
+- App shell: `web/src/App.tsx`
+- Seat map UI: `web/src/components/SeatMap.tsx`
+- Reservation form: `web/src/components/ReservationForm.tsx`
+- API client: `web/src/api/client.ts`
+- Types: `web/src/types/index.ts`
+- Vite config: `web/vite.config.ts`
+- HTML entry: `web/index.html`
+
+## Notes
+- The project intentionally ships without concrete implementations. Use the TODOs as a checklist and implement only what you need.
+- Suggested dependencies (add as you go):
+  - Server: `express`, `cors`, `ts-node-dev`, `@types/express`
+  - Web: `react`, `react-dom`, `vite`, `@vitejs/plugin-react-swc`
+  - Shared/tooling: `typescript`, a validator (e.g. `zod`), and a test runner if desired.
