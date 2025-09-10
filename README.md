@@ -10,8 +10,17 @@ A minimal scaffold designed for implementing a seat reservation system yourself.
 ## Getting Started
 1) Copy `.env.example` to `.env` and adjust values (e.g., `PORT`, `DATABASE_URL`, `VITE_API_BASE_URL`).
 2) Install dependencies with your preferred package manager (pnpm/npm/yarn). Example with pnpm workspaces: `pnpm -w i`.
-3) Run dev servers from the repo root: `pnpm dev` (starts server and web together).
-   - Or run individually: `pnpm --filter server dev`, `pnpm --filter web dev`.
+3) Backend-only development: `pnpm --filter server dev` (frontend is deferred for now).
+   - To start both (later when integrating): `pnpm dev` or `pnpm --filter web dev` separately.
+
+## Development Plan (Backend-First)
+- Finalize backend API design and domain models.
+- Implement an in-memory repository layer (swappable for DB later).
+- Build service logic: seat holds (with TTL), reservations, cancellation, and concurrency guards.
+- Wire Express app, routes, validation, and error handling.
+- Add tests and validate core flows locally.
+- Document the API (endpoints, payloads, error shapes).
+- Integrate the frontend after backend is stable and tested.
 
 ## Where to Implement
 Start by opening these files and following the inline TODOs:
